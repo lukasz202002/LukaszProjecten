@@ -1,0 +1,183 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dijkstra Draisma</title>
+  <link rel="stylesheet" href="css\dijkstra.css">
+  <script src="js\jspdf.js"></script>
+  
+  
+</head>
+<body>
+  <!-- HEADER CODE -->
+  <header class="header">
+    <img src="img/logo.jpg" alt="Logo" class="header-logo">
+    <h1>Dijkstra Draisma</h1>
+    <p>Lukasz & Pj</p>
+  </header>
+  <!-- HEADER CODE -->
+
+  <!-- FORM WITH ALLE INPUTS CODE -->
+  <form class="form">
+    <table class="tabelmuur" border="0">
+      <tr>
+        <td colspan="7" style="text-align: center;">
+          <input class="steenkeus" type="text" id="steenkeus" size="30"  readonly>
+        </td>  
+      </tr>
+      <tr>
+        <td colspan="7">
+            <!-- STEENSOORT KIEZEN -->
+          <strong>1. Kies een steensoort:</strong>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="7">
+          <select id="stenen" onchange="bepaalSteenformaat()">
+            <option value="kies" selected>U heeft nog niets geselecteerd</option>
+            <option value="Waal">Waalformaat - 210x100x50</option>
+            <option value="Dik">Dikformaat - 215x101x65</option>
+            <option value="Rijn">Rijnformaat - 180x87x41</option>
+            <option value="Vecht">Vechtformaat - 210x100x40</option>
+            <option value="Yssel">Ysselformaat - 160x78x41</option>
+            <option value="Klooster">Kloosterformaat - 280x130x80</option>
+          </select>
+        </td>
+      </tr>
+      <!-- STEENSOORT KIEZEN -->
+      <tr>
+          <!-- STEENVERBAND KIEZEN -->
+        <td colspan="7">
+          <strong>2. Kies een steenverband:</strong>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="7">
+          <select id="steenverband">
+            <option value="tegel" selected>Tegelverband</option>
+            <option value="half">Halfsteens-verband</option>
+          </select>
+        </td>
+      </tr>
+          <!-- STEENVERBAND KIEZEN -->
+      <tr>
+        <td colspan="7">
+              <!-- DEUREN -->
+          <strong>3. Hoeveel deuren?</strong>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="7">
+          <select id="deuren" onchange="deur()">
+            <option value="0" selected>Geen deur</option>
+            <option value="1">1 deur</option>
+          </select>
+        
+<tr>
+   <!-- AFMETINGEN VAN DEUREN -->
+      <td><strong>Afmetingen van de deur:</strong> </td>
+      <td><p>Breedte MM</p><input type="text" size="2" id="deurbreedte" readonly></td>
+      <td><p>Breedte PX</p><input type="text" id="deurBreedtePx" size="2" readonly></td>
+      <td><p>Hoogte MM</p><input type="text" size="2" id="deurhoogte" readonly></td>
+      <td><p>Hoogte PX</p><input type="text" id="deurHoogtePx" size="2" readonly></td>
+    </tr>
+      <tr>
+        <br>
+        <td><div class="labelda"><strong>4. Afstand deur vanaf links:</strong></div></td>
+        <td><select id="deurafstand" class="da">
+          <option value="1" selected>1 steen</option>
+        </tr>
+           <!-- DEUREN -->
+
+              <!-- MUUR BREEDTE -->
+        <td><strong>5. Kies muur breedte:</strong></td>
+        <td><select id="muurbreedte" onchange="changeMuur()">
+            <option value="3000" selected>3 meter</option>
+            <option value="4000">4 meter</option>
+            <option value="5000">5 meter</option>
+            <option value="6000">6 meter</option>
+            <option value="7000">7 meter</option>
+            <option value="7500">7,5 meter</option>
+          </select>&nbsp;<input type="text" size=1 id="asb" readonly>&nbsp;Stenen</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+           <!-- AFMETINGEN VAN STENEN BEPALEN -->
+          <td>Afmetingen stenen:</td>
+          <td><input type="text" size="2" id="steenbreedte" readonly></td>
+        <td><input type="text" id="steenBreedtePx" size="2" readonly></td>
+        <td><input type="text" size="2" id="steenhoogte" readonly></td>
+        <td><input type="text" id="steenHoogtePx" size="2" readonly></td>
+    </tr>
+    <tr>           
+         <!-- MUUR HOOGTE KIEZEN -->
+        <td><i><strong>6. Kies muur hoogte:</strong></i></td>
+        <td><select id="muurhoogte" onchange="changeMuur()">
+            <option value="2600" selected>2.60 meter</option>
+            <option value="2800">2.80 meter</option>
+            <option value="3000">3 meter</option>
+            <option value="3200">3.20 meter</option>
+            <option value="3400">3.20 meter</option>
+            <option value="3600">3.60 meter</option>
+          </select>&nbsp;<input type="text" size=1 id="ash" readonly>&nbsp;Stenen</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+           <!-- MUUR AFMETINGEN BEPALEN -->
+          <td>Afmetingen muur:</td>
+          <td><input type="text" size="2" id="mbreedte" readonly></td>
+        <td><input type="text" id="muurBreedtePx" size="2" readonly></td>
+        <td><input type="text" size="2" id="mhoogte" readonly></td>
+        <td><input type="text" id="muurHoogtePx" size="2" readonly></td> 
+    </tr>
+</table>
+  <!-- MUUR -->
+
+  <!-- FORM WITH ALLE INPUTS CODE -->
+<br>
+
+  <!-- MUUR MAKEN / CLEAR KNOPEN -->
+<div class="button2">
+<button class="button" type="button" id="btnStart" onclick="drawMuur()">Maak een muur</button></td>  
+<button class="button" onmouseover="clearcanvas1()">Clear canvas</button> 
+<button class="button" type="button" id="btnStart" onclick="pdfOpslaan()">Als PDF opslaan</button></td>  
+
+
+</div>
+ <!-- MUUR MAKEN / CLEAR KNOPEN -->
+
+
+
+<br>
+<hr>
+ <!-- CANVAS -->
+ <div class="canvasdownload">
+<canvas id="canvas" width="1000" height="500"></canvas>
+</div>
+<br><br>
+
+
+
+ <!-- FOOTER -->
+
+<footer class="footer">
+  <img src="img/footer.jpg" alt="Company Logo" style="max-width: 100%; margin-bottom: 20px;">
+  <p>Copyright © 2023 Dijkstra Draisma. All rights reserved.</p>
+  <p>Address: Bocksmeulen 23
+    9101 RA Dokkum, Nederland</p>
+  <p>Phone:  0519-229999 | Email: info@bgdd.nl</p>
+  <a href="https://www.mbo-portal.nl/~fp220605/presentatie.ppt">Presentatie</a> 
+  <a href="https://www.mbo-portal.nl/~fp220605/planvanaanpak.docx">Plan van aanpak</a> 
+
+</footer>
+ <!-- FOOTER -->
+
+
+  <!-- JAVA SCRIPTS -->
+<script src="js\muurjava.js"></script> 
+<script src="js\deurjava.js"></script>  
+</body>
+</html>
