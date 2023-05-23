@@ -1,0 +1,10 @@
+a = float(input('Geef het eerste getal: '))
+b = float(input('Geef het tweede getal: '))
+
+print('Optellen:', a + b)
+print('Aftrekken:', a - b)
+print('Delen:', a / b)
+print('Vermenigvuldigen:', a * b)
+print('Rest bij deling:', a % b)
+print('Gehele deling:', a // b)
+print('Machtsverheffing:', a ** b)
